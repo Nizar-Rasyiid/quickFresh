@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Kopi Kenangan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="order-header">
+            <h1>Kopi Kenangan</h1>
+            <p>Address</p>
+            <p>Perumahan Barbie World</p>
+        </div>
+
+        <!-- Voucher Card in order.html -->
+<div class="voucher-card">
+    <input type="text" placeholder="Type your promo code" id="promo-code">
+    <h2>Promo Recommendation</h2>
+    <div class="promo">
+      <p>Diskon Ongkir 10rb<br>Berlaku di resto tertentu<br>Min Order 35rb</p>
+    </div>
+    <div class="promo">
+      <p>Diskon Ongkir 5rb<br>Berlaku di resto tertentu<br>Min Order 3 items</p>
+    </div>
+  </div>
+  
+
+        <!-- Delivery Options in order.html -->
+<div class="delivery-options">
+    <h2>Delivery Options</h2>
+    <button class="delivery-btn">Priority - 17,000</button>
+    <button class="delivery-btn">Standard - 14,000</button>
+    <button class="delivery-btn">Saver - 6,000</button>
+    <button class="delivery-btn" onclick="navigateTo('food.html')">Order for Later</button>
+  </div>
+  
+
+        <!-- <div class="order-summary">
+            <h2>Order Summary</h2>
+            <p>2 Kopi Kenangan Mantan - 42,000</p>
+            <p>Delivery Order Fee - 19,000</p>
+            <p><strong>Total: 61,000</strong></p>
+        </div> -->
+        <!-- Order Summary in order.html -->
+<div class="summary-card">
+    <h2>Order Summary</h2>
+    <p id="summary-item"></p>
+    <p id="summary-total"></p>
+  </div>
+  
+
+        <div class="add-orders">
+            <p>Add orders from other restaurants too?</p>
+            <button onclick="navigateTo('food.html')">Yes</button>
+        </div>
+
+        <div class="payment">
+            <h2>Payment</h2>
+            <p>Quickpay</p>
+        </div>
+        <button class="place-order" onclick="navigateToPage('track')">Place Order</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+
+  
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const itemName = sessionStorage.getItem("itemName");
+        const itemPrice = parseFloat(sessionStorage.getItem("itemPrice"));
+        const quantity = parseInt(sessionStorage.getItem("quantity"));
+  
+        // Calculate total price
+        const totalPrice = itemPrice * quantity;
+  
+        // Display in Order Summary
+        document.getElementById("summary-item").textContent = `${quantity} ${itemName} - Rp ${totalPrice.toLocaleString()}`;
+        document.getElementById("summary-total").textContent = `Total: Rp ${totalPrice.toLocaleString()}`;
+        });
+    </script>
+    <!-- Replace the existing Place Order button in order.html with this -->
+    
+
+</body>
+</html>

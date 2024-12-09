@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="promo-title">PROMO</h1>
+
+        <div class="mypoint-card">
+            <div class="point-amount">100</div>
+            <div class="point-label">MYPOINT</div>
+        </div>
+
+        <div class="promo-code-section">
+            <input type="text" class="promo-input" placeholder="TYPE YOUR PROMO CODE">
+        </div>
+
+        <div class="promo-sections">
+            <h2 class="section-title">PROMO RECOMMENDATION</h2>
+            <div class="voucher-list">
+                <div class="voucher-card" onclick="applyVoucher('ONGKIR10RB')">
+                    <div class="voucher-title">DISKON ONGKIR 10RB</div>
+                    <div class="voucher-desc">BERLAKU DI RESTO TERTENTU</div>
+                    <div class="voucher-type">FOOD PROMO</div>
+                </div>
+
+                <div class="voucher-card" onclick="applyVoucher('ONGKIR5RB')">
+                    <div class="voucher-title">DISKON ONGKIR 5RB</div>
+                    <div class="voucher-desc">BERLAKU DI TOKO TERTENTU</div>
+                    <div class="voucher-type">MART PROMO</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">SUBSCRIBE PROMO</h2>
+            <div class="voucher-list">
+                <div class="voucher-card" onclick="applyVoucher('ONGKIR20RB')">
+                    <div class="voucher-title">DISKON ONGKIR 20RB</div>
+                    <div class="voucher-desc">BERLAKU DI SEMUA TOKO MIN ORDER 3 BARANG</div>
+                    <div class="voucher-type">MART PROMO</div>
+                </div>
+
+                <div class="voucher-card" onclick="applyVoucher('ONGKIR30RB')">
+                    <div class="voucher-title">DISKON ONGKIR 30RB</div>
+                    <div class="voucher-desc">BERLAKU DI SEMUA RESTO MIN. ORDER 50RB</div>
+                    <div class="voucher-type">MART PROMO</div>
+                </div>
+
+                <div class="voucher-card" onclick="applyVoucher('DISKON70')">
+                    <div class="voucher-title">DISKON MAKANAN 70%</div>
+                    <div class="voucher-desc">BERLAKU DI RESTO TERTENTU MAX. DISKON 20RB</div>
+                    <div class="voucher-type">FOOD PROMO</div>
+                </div>
+            </div>
+        </div>
+        <nav class="navigation">
+            <div class="nav-item">Home</div>
+            <div class="nav-item">Promo</div>
+            <div class="nav-item">Activity</div>
+            <div class="nav-item">Chat</div>
+            <div class="nav-item">Profile</div>
+        </nav>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="promo.js"></script>
+</body>
+</html>

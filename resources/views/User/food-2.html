@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food - Order Details</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>FOOD</h1>
+        <div class="header-icons">
+          <span class="icon">❤</span>
+          <span class="icon">🔔</span>
+        </div>
+      </div>
+
+      <div class="order-details">
+        <div class="order-item">
+          <img src="gumball.jpg" alt="Kopi Kenangan" class="order-item-image" />
+          <div class="order-item-info">
+            <h3 id="food-name">Kopi Kenangan</h3>
+            <p id="food-price">Rp 20,000</p>
+            <div class="quantity-control">
+              <button id="decrease-quantity" class="quantity-btn">-</button>
+              <span id="item-quantity">1</span>
+              <button id="increase-quantity" class="quantity-btn">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span>Total</span>
+            <span id="total-price">Rp 20,000</span>
+          </div>
+          <button class="order-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+      </div>
+
+      <nav class="navigation">
+        <button class="nav-item">Home</button>
+        <button class="nav-item">Promo</button>
+        <button class="nav-item">Activity</button>
+        <button class="nav-item">Chat</button>
+        <button class="nav-item">Profile</button>
+      </nav>
+    </div>
+    <script src="navigation.js"></script>
+    <!-- Button in food-2.html to place the order -->
+    
+
+    <script>
+      function placeOrder() {
+      const itemName = document.getElementById("food-name").textContent;
+      const itemPrice = parseFloat(document.getElementById("food-price").textContent.replace("Rp ", "").replace(",", ""));
+      const quantity = parseInt(document.getElementById("item-quantity").textContent);
+
+      // Store order details in sessionStorage
+      sessionStorage.setItem("itemName", itemName);
+      sessionStorage.setItem("itemPrice", itemPrice);
+      sessionStorage.setItem("quantity", quantity);
+
+      // Redirect to order.html
+      window.location.href = "order.html";
+      }
+    </script>
+
+    <script>
+      let quantity = 1;
+
+      // Event listener untuk tombol increment dan decrement
+      document.getElementById("decrease-quantity").addEventListener("click", () => {
+        quantity = decreaseQuantity(quantity);
+      });
+      document.getElementById("increase-quantity").addEventListener("click", () => {
+        quantity = increaseQuantity(quantity);
+      });
+
+      function showOrderDetails(itemName, itemPrice) {
+        document.getElementById("food-name").textContent = itemName;
+        document.getElementById("food-price").textContent = `Rp ${itemPrice.toLocaleString()}`;
+        quantity = 1;
+        document.getElementById("item-quantity").textContent = quantity;
+        updateTotalPrice(quantity);
+      }
+
+      // Fungsi untuk mengurangi jumlah item
+      function decreaseQuantity(currentQuantity) {
+        if (currentQuantity > 1) {
+          currentQuantity--;
+          document.getElementById("item-quantity").textContent = currentQuantity;
+          updateTotalPrice(currentQuantity);
+        }
+        return currentQuantity;
+      }
+
+      // Fungsi untuk menambah jumlah item
+      function increaseQuantity(currentQuantity) {
+        currentQuantity++;
+        document.getElementById("item-quantity").textContent = currentQuantity;
+        updateTotalPrice(currentQuantity);
+        return currentQuantity;
+      }
+
+      // Fungsi untuk memperbarui harga total
+      function updateTotalPrice(currentQuantity) {
+        const itemPrice = parseFloat(document.getElementById("food-price").textContent.replace("Rp ", "").replace(",", ""));
+        const totalPrice = currentQuantity * itemPrice;
+        document.getElementById("total-price").textContent = `Rp ${totalPrice.toLocaleString()}`;
+      }
+
+      // Fungsi untuk mengarahkan ke halaman order details
+      function navigateToOrderDetails(itemName, itemPrice) {
+        sessionStorage.setItem("itemName", itemName);
+        sessionStorage.setItem("itemPrice", itemPrice);
+        window.location.href = "food-2.html";
+      }
+    </script>
+  </body>
+</html>
